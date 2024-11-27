@@ -380,7 +380,7 @@ My treatment modalities include;
 
 			<div class="field">
                 <label for="demo-PhoneNumber">Phone Number</label>
-                <input type="text" name="demo-PhoneNumber" id="demo-PhoneNumber" placeholder="### #######" />
+                <input type="text" name="demo-phoneNumber" id="demo-phoneNumber" placeholder="### #######" />
             </div>
 
 			
@@ -452,6 +452,7 @@ My treatment modalities include;
         // Collect form data
         const name = document.querySelector('#demo-name').value;
         const email = document.querySelector('#demo-email').value;
+		const phoneNumber = document.querySelector('#demo-phoneNumber').value;
         const category = document.querySelector('#demo-category').value;
         const priority = document.querySelector('input[name="demo-priority"]:checked').id === 'demo-priority-high' ? 'High' : 'Low';
         const sendCopy = document.querySelector('#demo-copy').checked;
@@ -463,6 +464,7 @@ My treatment modalities include;
             to_email: 'vidulpramitha2000@gmail.com', // Replace with your email
             from_name: name,
             from_email: email,
+			phoneNumber:phoneNumber,
             category:category,
             priority:priority,
             message1:message1,
