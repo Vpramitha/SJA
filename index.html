@@ -13,7 +13,45 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 		
+<style>
+	.checkbox-group {
+    display: flex; /* Use flexbox to align items */
+    gap: 20px; /* Add spacing between checkboxes */
+    align-items: center; /* Ensure labels align with checkboxes */
+}
 
+.checkbox-group div {
+    display: flex; /* Each checkbox-label pair is aligned */
+    align-items: center; /* Vertically align the checkbox and label */
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-left: 20px; /* Space between checkbox and label */
+}
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+/* Left and Right Sides */
+.form-left, .form-right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+    }
+}
+</style>
 
 		
 
@@ -255,7 +293,7 @@ My treatment modalities include;
 										</form>-->
 										<div class="" id="ask" style="background: rgba(0, 0, 0, 0.4); padding: 5px; border-radius: 5px;">
 										<h3 class="major">Ask Dr. Angeli</h3>
-										<form method="post" action="#">
+										<!--<form method="post" action="#">
 											<div class="fields">
 												<div class="field third">
 													<label for="demo-name">Name</label>
@@ -294,11 +332,11 @@ My treatment modalities include;
 													<label for="demo-human">Not a robot</label>
 												</div>
 												<div class="field">
-													<label for="demo-message1">What are three times?</label>
+													<label for="demo-message1">List three times when we could have an introductory meeting.</label>
 													<textarea name="demo-message1" id="demo-message1" placeholder="Enter your message" rows="2"></textarea>
 												</div>
 												<div class="field">
-													<label for="demo-message2">⁠what would you like to talk?</label>
+													<label for="demo-message2">What would you like to talk?</label>
 													<textarea name="demo-message2" id="demo-message2" placeholder="Enter your message" rows="2"></textarea>
 												</div>
 											</div>
@@ -309,9 +347,94 @@ My treatment modalities include;
 </ul>
 
 											
-										</form>
+										</form>-->
 
 
+										<form method="post" action="#">
+    <div class="form-container">
+        <!-- Left Side -->
+        <div class="form-left">
+            <div class="field">
+                <label for="demo-name">Name</label>
+                <input type="text" name="demo-name" id="demo-name" placeholder="Jane Doe" />
+            </div>
+            <div class="field">
+                <label for="demo-email">Email</label>
+                <input type="email" name="demo-email" id="demo-email" placeholder="jane@untitled.tld" />
+            </div>
+
+			
+
+			<div class="field">
+                <label for="demo-category">Category</label>
+                <div class="select-wrapper">
+                    <select name="demo-category" id="demo-category">
+                        <option value="">-</option>
+                        <option value="Book a session">Book a session</option>
+                        <option value="General question">General question</option>
+                        <option value="Specific question">Specific question</option>
+                        <option value="Private meet up">Private meet up</option>
+                    </select>
+                </div>
+            </div>
+
+			<div class="field">
+                <label for="demo-PhoneNumber">Phone Number</label>
+                <input type="text" name="demo-PhoneNumber" id="demo-PhoneNumber" placeholder="### #######" />
+            </div>
+
+			
+            
+
+           
+        </div>
+
+        <!-- Right Side -->
+        <div class="form-right">
+
+			<table class="field-table">
+    <tr>
+        <td>
+            <input type="radio" id="demo-priority-low" name="demo-priority" class="color2" checked />
+            <label for="demo-priority-low" style="font-size: 14px;">Low Priority</label>
+        </td>
+        <td>
+            <input type="radio" id="demo-priority-high" name="demo-priority" class="color2" />
+            <label for="demo-priority-high" style="font-size: 14px;">High Priority</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" id="demo-copy" name="demo-copy" class="color2" />
+            <label for="demo-copy" style="font-size: 14px;">Email a copy</label>
+        </td>
+        <td>
+            <input type="checkbox" id="demo-human" name="demo-human" class="color2" />
+            <label for="demo-human" style="font-size: 14px;">Not a robot</label>
+        </td>
+    </tr>
+</table>
+
+
+ <div class="field">
+                <label for="demo-message1">List three times for an introductory meeting</label>
+                <textarea name="demo-message1" id="demo-message1" placeholder="Enter your message" rows="2"></textarea>
+            </div>
+			
+            <div class="field">
+                <label for="demo-message2">What would you like to talk about?</label>
+                <textarea name="demo-message2" id="demo-message2" placeholder="Enter your message" rows="2"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <ul class="actions" style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <li><input type="submit" value="Book a Session" class="primary color2" /></li>
+        <li><input type="reset" value="Reset" /></li>
+        <li style="margin-left: auto;"><a href="#privacy" class="button primary" style="text-decoration: none;">Privacy policy</a></li>
+    </ul>
+</form>
 
 
 
