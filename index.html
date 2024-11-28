@@ -369,7 +369,7 @@ My treatment modalities include;
                 <label for="demo-category">Category</label>
                 <div class="select-wrapper">
                     <select name="demo-category" id="demo-category">
-                        <option value="">-</option>
+                        <option value="">Select a Category</option>
                         <option value="Book a session">Book a session</option>
                         <option value="General question">General question</option>
                         <option value="Specific question">Specific question</option>
@@ -416,7 +416,7 @@ My treatment modalities include;
 </table>
 
 
- <div class="field">
+ <div class="field" style="margin-top: -20px;">
                 <label for="demo-message1">List three times for an introductory meeting</label>
                 <textarea name="demo-message1" id="demo-message1" placeholder="Enter your message" rows="2"></textarea>
             </div>
@@ -429,16 +429,21 @@ My treatment modalities include;
     </div>
 
     <!-- Actions -->
-    <ul class="actions" style="display: flex; flex-wrap: wrap; gap: 10px;">
-        <li><input type="submit" value="Book a Session" class="primary color2" /></li>
-        <li><input type="reset" value="Reset" /></li>
-        <li style="margin-left: auto;"><a href="#privacy" class="button primary" style="text-decoration: none;">Privacy policy</a></li>
+    <ul class="actions" style="display: flex; flex-wrap: wrap; gap: 5px;">
+        <li style="margin-top: 10px;">
+  <input type="submit" value="Book a Session" class="primary color2" />
+</li>
+<li style="margin-top: 10px;">
+  <input type="reset" value="Reset" />
+</li>
+
+        <li style="margin-left: auto; margin-top: 10px;"><a href="#privacy" class="button primary" style="text-decoration: none;">Privacy policy</a></li>
     </ul>
 </form>
 
 
 
-										<script>
+										<script>/*
     document.querySelector('form').addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -458,6 +463,8 @@ My treatment modalities include;
         const sendCopy = document.querySelector('#demo-copy').checked;
         const message1 = document.querySelector('#demo-message1').value;
         const message2 = document.querySelector('#demo-message2').value;
+
+		
 
         // Prepare the email content
         const emailParams = {
@@ -486,7 +493,105 @@ My treatment modalities include;
                 alert('Failed to send email. Please try again.');
                 console.error(error);
             });
-    });
+    });*/
+
+
+
+	document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Validate "Not a robot" checkbox
+    const isHuman = document.querySelector('#demo-human').checked;
+    if (!isHuman) {
+        alert('Please confirm you are not a robot.');
+        return;
+    }
+
+    // Collect form data
+    const name = document.querySelector('#demo-name').value.trim();
+    const email = document.querySelector('#demo-email').value.trim();
+    const phoneNumber = document.querySelector('#demo-phoneNumber').value.trim();
+    const category = document.querySelector('#demo-category').value.trim();
+    const priorityElement = document.querySelector('input[name="demo-priority"]:checked');
+    const priority = priorityElement ? (priorityElement.id === 'demo-priority-high' ? 'High' : 'Low') : '';
+    const sendCopy = document.querySelector('#demo-copy').checked;
+    const message1 = document.querySelector('#demo-message1').value.trim();
+    const message2 = document.querySelector('#demo-message2').value.trim();
+
+    // Regular expressions for validation
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+?[0-9]{10,15}$/;
+
+    // Validation checks
+    if (!name) {
+        alert('Name is required.');
+        return;
+    }
+    if (!nameRegex.test(name)) {
+        alert('Name can only contain letters and spaces.');
+        return;
+    }
+    if (!email) {
+        alert('Email is required.');
+        return;
+    }
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    if (!phoneNumber) {
+        alert('Phone number is required.');
+        return;
+    }
+    if (!phoneRegex.test(phoneNumber)) {
+        alert('Please enter a valid phone number (10-15 digits).');
+        return;
+    }
+    if (!category) {
+        alert('Please select a category.');
+        return;
+    }
+
+	if (!message1) {
+        alert('Please provide three time options for an introductory meeting.');
+        return;
+    }
+
+	if (!message2) {
+        alert('Please specify what you would like to discuss.');
+        return;
+    }
+
+    // Prepare the email content
+    const emailParams = {
+        to_email: 'vidulpramitha2000@gmail.com', // Replace with your email
+        from_name: name,
+        from_email: email,
+        phoneNumber: phoneNumber,
+        category: category,
+        priority: priority,
+        message1: message1,
+        message2: message2,
+    };
+
+    // Send email using EmailJS
+    emailjs
+        .send('service_ut54ukq', 'template_ij18sid', emailParams) // Replace SERVICE_ID and TEMPLATE_ID
+        .then((response) => {
+            alert('Email sent successfully!');
+            if (sendCopy) {
+                // Send a copy to the user's email
+                emailParams.to_email = email;
+                emailjs.send('service_ut54ukq', 'template_ij18sid', emailParams);
+            }
+        })
+        .catch((error) => {
+            alert('Failed to send email. Please try again.');
+            console.error(error);
+        });
+});
+
 </script>
 
 
@@ -826,8 +931,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								</div>
 							</section>
 
-						<!-- Copyright -->
-							<div class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</div>
+						<!-- Copyright --><!--
+<div class="copyright" style="color: black;">&copy; Your Website Name. Design by: <a href="https://html5up.net" style="color: black; text-decoration: none;">HTML5 UP</a>.</div>
+-->
+
+<div class="copyright" style="color: black;">&copy; 2024 Dr.Angeli.com. All rights reserved.</div>
+
 
 					</div>
 
